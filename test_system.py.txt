@@ -1,0 +1,38 @@
+# Assuming all classes are imported
+
+def test_add_book_to_cart():
+    customer = Customer('Jane Doe', 28, 'Mystery', True)
+    book1 = Book('101', 'Python Crash Course', 'Eric Matthes', 39.99)
+    cart = ShoppingCart()
+    cart.add_book(book1)
+
+    assert len(cart.items) == 1
+    assert cart.total_price() == 39.99
+    print("Test passed: add_book_to_cart")
+
+def test_apply_discount():
+    customer = Customer('Jane Doe', 28, 'Mystery', True)
+    book1 = Book('101', 'Python Crash Course', 'Eric Matthes', 39.99)
+    cart = ShoppingCart()
+    cart.add_book(book1)
+    
+    order = Order(customer, cart)
+    order.apply_discount(0.10)  # 10% discount
+    
+    assert order.total_amount == 35.99
+    print("Test passed: apply_discount")
+
+def test_generate_invoice():
+    customer = Customer('Jane Doe', 28, 'Mystery')
+    book1 = Book('101', 'Python Crash Course', 'Eric Matthes', 39.99)
+    cart = ShoppingCart()
+    cart.add_book(book1)
+
+    order = Order(customer, cart)
+    invoice = Invoice(order)
+    print(invoice.generate_invoice())
+
+# Execute test cases
+test_add_book_to_cart()
+test_apply_discount()
+test_generate_invoice()

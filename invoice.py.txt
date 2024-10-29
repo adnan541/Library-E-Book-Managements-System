@@ -1,0 +1,10 @@
+class Invoice:
+    VAT_RATE = 0.08
+
+    def __init__(self, order):
+        self.order = order
+
+    def generate_invoice(self):
+        vat = self.order.total_amount * Invoice.VAT_RATE
+        total_with_vat = self.order.total_amount + vat
+        return f"Invoice for {self.order.customer.name}\nTotal before VAT: ${self.order.total_amount}\nVAT: ${vat}\nTotal with VAT: ${total_with_vat}"

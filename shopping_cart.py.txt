@@ -1,0 +1,15 @@
+class ShoppingCart:
+    def __init__(self):
+        self.items = []
+
+    def add_book(self, book):
+        self.items.append(book)
+
+    def remove_book(self, book):
+        self.items.remove(book)
+
+    def total_price(self):
+        return sum(book.price for book in self.items)
+
+    def __str__(self):
+        return f"Shopping Cart contains: {[book.title for book in self.items]}"

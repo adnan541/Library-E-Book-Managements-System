@@ -1,0 +1,16 @@
+from datetime import date
+
+class Order:
+    def __init__(self, customer, cart):
+        self.customer = customer
+        self.cart = cart
+        self.order_date = date.today()
+        self.total_amount = self.cart.total_price()
+
+    def apply_discount(self, discount_rate):
+        if self.customer.is_loyalty_member:
+            discount = self.total_amount * discount_rate
+            self.total_amount -= discount
+
+    def __str__(self):
+        return f"Order for {self.customer.name} on {self.order_date} - Total: ${self.total_amount}"

@@ -1,0 +1,14 @@
+class CreditCard:
+    def __init__(self, card_no, balance):
+        self.card_no = card_no
+        self.balance = balance
+
+    def charge(self, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        return f"Credit Card ending in {self.card_no[-4:]}"
